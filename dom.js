@@ -4,6 +4,9 @@ import {
 	createComputerPlayer,
 } from "./app.js";
 
+const realPlayer = createRealPlayer();
+const computerPlayer = createComputerPlayer();
+
 // renders board on DOM
 // board is re-rendered after every move so no need to delete old content
 function renderBoard(position = [0, 1]) {
@@ -14,14 +17,14 @@ function renderBoard(position = [0, 1]) {
 			squares.removeChild(squares.lastChild);
 		}
 		for (let i = 9; i >= 0; i--) {
-			console.log(i);
 			for (let j = 0; j < 10; j++) {
 				const square = document.createElement("div");
 				square.classList.add("square");
 				square.id = i * 10 + j;
 				// show valid move on hover
-				/* square.addEventListener("mouseover", () => {
-					const validMove = move(oldPosition, [i, j - 1]);
+				square.addEventListener("mouseover", () => {
+					//const validMove = move(oldPosition, [i, j - 1]);
+					const validMove = true;
 					if (validMove) {
 						square.style.backgroundColor = "#55FF55";
 					} else {
@@ -30,22 +33,15 @@ function renderBoard(position = [0, 1]) {
 				});
 				square.addEventListener("mouseleave", () => {
 					square.style.backgroundColor = null;
-				}); */
+				});
 				// allow click to move
-				/* square.addEventListener("click", () => {
-					const position = move(oldPosition, [i, j - 1]);
-					if (position) {
-						// update old position
-						oldPosition = position[0];
-						console.log(oldPosition);
-						// render new position
-						renderBoard(position[1]);
-					} else {
-						// go on a journey
-						const journeyPath = getJourney(oldPosition, [i, j - 1]);
-						doJourney(journeyPath);
+				square.addEventListener("click", () => {
+					computerPlayer.Gameboard.receiveAttack(j, i);
+					const gameWin = computerPlayer.Gameboard.allShipsSunk();
+					if (gameWin) {
+						console.log("Human Player Wins!");
 					}
-				}); */
+				});
 				squares.appendChild(square);
 			}
 		}
