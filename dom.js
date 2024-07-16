@@ -13,8 +13,9 @@ function renderBoard(position = [0, 1]) {
 		while (squares.lastChild) {
 			squares.removeChild(squares.lastChild);
 		}
-		for (let i = 0; i < 10; i++) {
-			for (let j = 1; j < 11; j++) {
+		for (let i = 9; i >= 0; i--) {
+			console.log(i);
+			for (let j = 0; j < 10; j++) {
 				const square = document.createElement("div");
 				square.classList.add("square");
 				square.id = i * 10 + j;
@@ -46,17 +47,6 @@ function renderBoard(position = [0, 1]) {
 					}
 				}); */
 				squares.appendChild(square);
-				if (
-					position &&
-					position[0] * 8 + position[1] + 1 === parseInt(square.id)
-				) {
-					/* const knightImage = document.createElement("img");
-					knightImage.src = "images/knight.jpg";
-					knightImage.alt = "Knight";
-					knightImage.id = "knightImage";
-					square.appendChild(knightImage);
-					square.classList.add("knight"); */
-				}
 			}
 		}
 	} catch (error) {
