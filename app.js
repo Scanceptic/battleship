@@ -1,5 +1,3 @@
-const { create } = require("domain");
-
 // create a battleship with a given length
 function createShip(length) {
 	const Ship = {
