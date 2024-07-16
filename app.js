@@ -1,6 +1,6 @@
-function createShip() {
+function createShip(length) {
 	const ship = {
-		length: 0,
+		length,
 		hits: 0,
 		sunk: false,
 	};
