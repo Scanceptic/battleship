@@ -55,7 +55,14 @@ function createGameboard() {
 			}
 			return false;
 		},
-		receiveAttack: function (x, y) {},
+		receiveAttack: function (x, y) {
+			if (typeof this.grid[y][x] === "object") {
+				return this.grid[y][x].hit();
+			} else {
+				this.missedAttacks.push([x, y]);
+				return [x, y];
+			}
+		},
 		missedAttacks: [],
 		allShipsSunk: false,
 	};
