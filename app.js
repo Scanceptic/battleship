@@ -18,7 +18,7 @@ function createShip(length) {
 }
 
 // create the gameboard
-function createGameboard() {
+const createGameboard = function () {
 	function createGrid() {
 		const grid = [];
 		const row = new Array(10);
@@ -77,20 +77,20 @@ function createGameboard() {
 	};
 
 	return Gameboard;
-}
+};
 
-function createRealPlayer() {
+const createRealPlayer = function () {
 	const realPlayer = {
 		Gameboard: createGameboard(),
 	};
 	return realPlayer;
-}
+};
 
-function createComputerPlayer() {
+const createComputerPlayer = function () {
 	const computerPlayer = {
 		Gameboard: createGameboard(),
 	};
 	return computerPlayer;
-}
+};
 
-module.exports = { createGameboard, createRealPlayer, createComputerPlayer };
+export { createGameboard, createRealPlayer, createComputerPlayer };
