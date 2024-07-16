@@ -81,6 +81,18 @@ function createGameboard() {
 	return Gameboard;
 }
 
-const Gameboard = createGameboard();
+function createRealPlayer() {
+	const realPlayer = {
+		Gameboard: createGameboard(),
+	};
+	return realPlayer;
+}
 
-module.exports = { Gameboard };
+function createComputerPlayer() {
+	const computerPlayer = {
+		Gameboard: createGameboard(),
+	};
+	return computerPlayer;
+}
+
+module.exports = { createGameboard, createRealPlayer, createComputerPlayer };
