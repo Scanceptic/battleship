@@ -59,7 +59,6 @@ test("attack at position [4,5] with no ship placed there, returns the coords of 
 
 test("Ship placed at [1,1] and sunk, allShipsSunk returns true", () => {
 	const Gameboard = createGameboard();
-	Gameboard.allShips = [];
 	Gameboard.placeShip(1, 1, 1);
 	Gameboard.receiveAttack(1, 1);
 	expect(Gameboard.allShipsSunk()).toBe(true);
@@ -67,7 +66,6 @@ test("Ship placed at [1,1] and sunk, allShipsSunk returns true", () => {
 
 test("Ship placed at [1,1] and not sunk, allShipsSunk returns false", () => {
 	const Gameboard = createGameboard();
-	Gameboard.allShips = [];
 	Gameboard.placeShip(1, 1, 1);
 	expect(Gameboard.allShipsSunk()).toBe(false);
 });
