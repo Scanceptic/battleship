@@ -15,6 +15,8 @@ function createShip(length) {
 	return ship;
 }
 
-const testShip = createShip(3);
+const hitTestShip = createShip(3);
 
-module.exports = { testShip };
+const sunkTestShip = createShip(0);
+
+module.exports = { hitTestShip, sunkTestShip };
