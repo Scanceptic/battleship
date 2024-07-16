@@ -1,4 +1,8 @@
-import { createGameboard, createRealPlayer, createComputerPlayer } from "./app.js";
+import {
+	createGameboard,
+	createRealPlayer,
+	createComputerPlayer,
+} from "./app.js";
 
 // renders board on DOM
 // board is re-rendered after every move so no need to delete old content
@@ -9,13 +13,13 @@ function renderBoard(position = [0, 1]) {
 		while (squares.lastChild) {
 			squares.removeChild(squares.lastChild);
 		}
-		for (let i = 0; i < 8; i++) {
-			for (let j = 1; j < 9; j++) {
+		for (let i = 0; i < 10; i++) {
+			for (let j = 1; j < 11; j++) {
 				const square = document.createElement("div");
 				square.classList.add("square");
-				square.id = i * 8 + j;
+				square.id = i * 10 + j;
 				// show valid move on hover
-				square.addEventListener("mouseover", () => {
+				/* square.addEventListener("mouseover", () => {
 					const validMove = move(oldPosition, [i, j - 1]);
 					if (validMove) {
 						square.style.backgroundColor = "#55FF55";
@@ -25,9 +29,9 @@ function renderBoard(position = [0, 1]) {
 				});
 				square.addEventListener("mouseleave", () => {
 					square.style.backgroundColor = null;
-				});
+				}); */
 				// allow click to move
-				square.addEventListener("click", () => {
+				/* square.addEventListener("click", () => {
 					const position = move(oldPosition, [i, j - 1]);
 					if (position) {
 						// update old position
@@ -40,18 +44,18 @@ function renderBoard(position = [0, 1]) {
 						const journeyPath = getJourney(oldPosition, [i, j - 1]);
 						doJourney(journeyPath);
 					}
-				});
+				}); */
 				squares.appendChild(square);
 				if (
 					position &&
 					position[0] * 8 + position[1] + 1 === parseInt(square.id)
 				) {
-					const knightImage = document.createElement("img");
+					/* const knightImage = document.createElement("img");
 					knightImage.src = "images/knight.jpg";
 					knightImage.alt = "Knight";
 					knightImage.id = "knightImage";
 					square.appendChild(knightImage);
-					square.classList.add("knight");
+					square.classList.add("knight"); */
 				}
 			}
 		}
@@ -59,3 +63,5 @@ function renderBoard(position = [0, 1]) {
 		console.log(error);
 	}
 }
+
+renderBoard();
